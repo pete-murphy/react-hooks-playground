@@ -1,8 +1,8 @@
-import React from "react"
+import React, { memo } from "react"
 import { prop } from "ramda"
 import useProfunctorState from "@staltz/use-profunctor-state"
 
-const Input = ({ state, setState }) => {
+const _Input = ({ state, setState }) => {
   const handleChange = ({ target: { value } }) =>
     setState(value)
 
@@ -13,7 +13,9 @@ const Input = ({ state, setState }) => {
   )
 }
 
-function App() {
+const Input = memo(_Input)
+
+export default () => {
   const initialState = {
     name: "Moo",
     other: {},
@@ -46,5 +48,3 @@ function App() {
     </div>
   )
 }
-
-export default App
